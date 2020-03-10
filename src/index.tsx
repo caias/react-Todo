@@ -1,8 +1,13 @@
 'use strict';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Dashboard from 'components/Wrapper';
+import { render } from 'react-dom';
+
+import App from 'components/App';
+
 import './scss/global.scss';
 
-ReactDOM.render(<Dashboard />, document.getElementById('app'));
+render(
+  <App />,
+  document.getElementById('app')
+);
