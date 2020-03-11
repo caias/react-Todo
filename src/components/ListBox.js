@@ -4,7 +4,7 @@ import TodoItem from 'components/TodoItem';
 import SubTitle from 'components/SubTitle';
 import Button from 'components/Button';
 import SelectBox from 'components/SelectBox';
-import AllDeleteButton from 'components/AllDeleteButton'
+import AllSelect from 'components/AllSelect'
 
 const ListBox = (props) => {
   const { type } = props;
@@ -23,7 +23,7 @@ const ListBox = (props) => {
       <SubTitle title={`${isComplete ? '완료된' : '미완료'} 리스트`}  />
       {type === 'incomplete' && <SelectBox />}
       <ItemContainer>
-        <AllDeleteButton {...props}/>
+        <AllSelect {...props}/>
         <TodoItem {...props} />
       </ItemContainer>
       <Button {...props} text={isComplete ? '복구하기' : '완료하기'} />

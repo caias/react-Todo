@@ -14,6 +14,7 @@ const Button = (props) => {
     color: #fff;
     display: inline-block;
     text-align: center;
+    font-size: 1rem;
     vertical-align: middle;
     user-select: none;
     padding: .375rem .75rem;

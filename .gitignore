@@ -41,6 +41,7 @@ node_modules/
 
 # Build directory
 build/
+dist/
 
 # MAC OS Garbage file
 *DS_Store*

@@ -5,6 +5,7 @@ const AllDeleteButton = (props) => {
   const { type } = props;
 
   const Button = styled.button`
+    cursor: pointer;
     padding: .75rem 1.25rem;
     text-align: left;
     background-color: transparent;

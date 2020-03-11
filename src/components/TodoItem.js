@@ -11,6 +11,7 @@ const TodoItem = (props) => {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    text-decoration: none;
     font-size: 1.25rem;
     line-height: 1.2;
     font-weight: 500;

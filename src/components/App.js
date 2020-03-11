@@ -1,5 +1,6 @@
 import React from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { Provider } from 'react-redux'
 import theme from "theme/theme";
 import Header from 'components/Header'
 import Container from 'components/Container';
