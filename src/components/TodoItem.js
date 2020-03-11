@@ -2,7 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 const TodoItem = (props) => {
-  const { type } = props;
+  console.log(props)
+  const {
+    id,
+    type,
+    title,
+    updateDate,
+  } = props;
 
   const Anchor = styled.a.attrs({ href: '#' })`
     padding: .75rem 1.25rem;
@@ -32,9 +38,9 @@ const TodoItem = (props) => {
   `;
 
   return(
-    <Anchor>
-      <span>List group item heading</span>
-      <small>2019-04-10 14:00</small>
+    <Anchor data-id={id}>
+      <span>{title}</span>
+      <small>{updateDate}</small>
     </Anchor>
   );
 }

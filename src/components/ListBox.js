@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import TodoItem from 'components/TodoItem';
 import SubTitle from 'components/SubTitle';
 import Button from 'components/Button';
@@ -7,7 +8,7 @@ import SelectBox from 'components/SelectBox';
 import AllSelect from 'components/AllSelect'
 
 const ListBox = (props) => {
-  const { type } = props;
+  const { data, type } = props;
   const isComplete = type === 'complete'
 
   const ItemContainer = styled.div`
@@ -24,7 +25,7 @@ const ListBox = (props) => {
       {type === 'incomplete' && <SelectBox />}
       <ItemContainer>
         <AllSelect {...props}/>
-        <TodoItem {...props} />
+        {data.map((list, index) => <TodoItem id={index} type={type} title={list.title} updateDate={list.updateDate} />)}
       </ItemContainer>
       <Button {...props} text={isComplete ? '복구하기' : '완료하기'} />
     </React.Fragment>

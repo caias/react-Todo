@@ -1,9 +1,11 @@
 import React from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux'
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducers from '../reducers';
 import theme from "theme/theme";
 import Header from 'components/Header'
-import Container from 'components/Container';
+import TodoContainer from 'components/container/container';
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -13,13 +15,17 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
+const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <Header />
-      <Container />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Header />
+        <TodoContainer />
+      </ThemeProvider>
+    </Provider>
   );
 };
 

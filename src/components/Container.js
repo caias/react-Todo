@@ -18,17 +18,18 @@ const CardContainer = styled.div`
   margin-top: 2rem;
 `;
 
-const Container = () => {
+const Container = (props) => {
+  const { incompletedData, completedData } = props;
   return(
     <DIV>
       <CardContainer>
         <TodoInput />
       </CardContainer>
       <CardContainer>
-        <ListBox type="incomplete" />
+        <ListBox data={incompletedData} type="incomplete" />
       </CardContainer>
       <CardContainer>
-        <ListBox type="complete" />
+        <ListBox data={completedData} type="complete" />
       </CardContainer>
     </DIV>
   );

@@ -14,6 +14,7 @@ const Select = styled.select`
   border: 1px solid #ced4da;
   border-radius: .25rem;
   background-color: #fff;
+  font-size: 1rem;
 `;
 
 const SelectBox = () => {
