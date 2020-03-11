@@ -1,6 +1,6 @@
 {
   "name": "react-scaffolding",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "react with webpack and typescript my scaffolding",
   "main": "index.js",
   "scripts": {

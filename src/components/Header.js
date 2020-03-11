@@ -1,10 +1,20 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Section = styled.section`
+  padding: .8rem 1rem;
+  background-color: #f8f9fa;
+  h1 {
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+`;
 
 const Header = () => {
   return(
-    <nav className="navbar navbar-light bg-light">
-      <span className="navbar-brand mb-0 h1">프론트엔드 워밍업! - TODO List</span>
-    </nav>
+    <Section>
+      <h1>프론트엔드 워밍업! - TODO List</h1>
+    </Section>
   );
 }
 

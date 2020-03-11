@@ -16,7 +16,6 @@
     "baseUrl": ".",
     "paths": {
       "components/*": ["./src/components/*"],
-      "scss/*": ["./src/scss/*"]
     },
     "allowJs": true,
     "sourceMap": true,

@@ -10,7 +10,7 @@ const SRC_PATH = resolve(ROOT, 'src');
 
 module.exports = {
   entry: {
-    index: resolve(__dirname, '..', 'src', 'index.tsx'),
+    index: resolve(__dirname, '..', 'src', 'index.js'),
   },
   output: {
     filename: '[name].js',
@@ -67,10 +67,12 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', 'jsx', '.scss'],
+    // extensions: ['.tsx', '.ts', '.js', 'jsx', '.scss'],
+    extensions: ['.js', 'jsx', '.scss'],
     alias: {
       'components': resolve(SRC_PATH, 'components'),
       'scss': resolve(SRC_PATH, 'scss'),
+      'theme': resolve(SRC_PATH, 'theme'),
     }
   },
   plugins: [

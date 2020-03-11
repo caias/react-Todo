@@ -1,18 +1,31 @@
 import React from 'react';
+import styled from 'styled-components';
+import SubTitle from 'components/SubTitle';
+import Button from 'components/Button';
+
+const Input = styled.input.attrs({ 
+    type: 'text',
+    placeholder: '30자 이내로 입력해주세요.',
+    "data-input": "addTodo"
+  })`
+  width: 100%;
+  color: #495057;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  line-height: 1.5;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  height: 38px;
+`;
 
 const TodoInput = () => {
-  return(
-    <div className="col-lg-12 m-t-20">
-      <div className="card" style={{ width: '100%' }}>
-        <div className="card-body">
-          <h6 className="card-title">리스트 추가</h6>
-          <div className="form-group">
-            <input type="text" className="form-control" placeholder="30자 이하로 입력해 주세요" />
-            <button type="button" className="btn btn-secondary m-t-20 float-right">추가하기</button>
-          </div>
-        </div>
-      </div>
-    </div>
+  return (
+    <React.Fragment>
+      <SubTitle title="리스트 추가하기" />
+      <Input />
+      <Button type="add" text="추가하기" />
+    </React.Fragment>
   );
 }
 

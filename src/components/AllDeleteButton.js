@@ -1,41 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const TodoItem = (props) => {
+const AllDeleteButton = (props) => {
   const { type } = props;
 
-  const Anchor = styled.a.attrs({ href: '#' })`
+  const Button = styled.button`
     padding: .75rem 1.25rem;
     text-align: left;
     background-color: transparent;
-    display: flex;
-    justify-content: space-between;
     width: 100%;
     font-size: 1.25rem;
     line-height: 1.2;
     font-weight: 500;
-    border-top: 1px solid rgba(0,0,0,.125);
     color: ${props => props.theme[type].fontColor};
-    &:hover{
-      text-decoration: none;
-      color: #0056b3;
-    }
     &.active{
       background-color: ${props => props.theme[type].itemActiveBg};
       color: ${props => props.theme[type].fontActiveColor};
     }
-    small {
-      font-size:80%;
-      font-weight: 400;
-    }
   `;
 
   return(
-    <Anchor>
-      <span>List group item heading</span>
-      <small>2019-04-10 14:00</small>
-    </Anchor>
+    <Button data-all-delete={type}>전체선택</Button>
   );
-}
+};
 
-export default TodoItem;
+export default AllDeleteButton;
