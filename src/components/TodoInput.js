@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import SubTitle from 'components/SubTitle';
-import Button from 'components/Button';
+// Presentational Component
+import SubmitButton from 'components/SubmitButton';
+// util
+import { getDate } from 'utils/date'
 
+const limit = 30;
 const Input = styled.input.attrs({ 
     type: 'text',
-    placeholder: '30자 이내로 입력해주세요.',
-    "data-input": "addTodo"
+    placeholder: `${limit}자내로 적어주세요.`
   })`
   width: 100%;
   color: #495057;
@@ -19,12 +21,35 @@ const Input = styled.input.attrs({
   height: 38px;
 `;
 
-const TodoInput = () => {
+const TodoInput = (props) => {
+  const { addTodo } = props;
+  const [value, setValue] = useState('');
+  
+  const onChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  const onClick = () => {
+    if (!value) {
+      alert('내용이 없습니다.');
+      return;
+    } else if (value.length > limit) {
+      alert(`글자수가 ${limit}자를 초과하였습니다.`);
+
+      const modifyText = value.slice(0, limit - 1);
+      setValue(modifyText);
+      return;
+    }
+
+    const date = getDate();
+    addTodo(value, date);
+    setValue('');
+  }
+
   return (
     <React.Fragment>
-      <SubTitle title="리스트 추가하기" />
-      <Input />
-      <Button type="add" text="추가하기" />
+      <Input onChange={onChange} value={value}/>
+      <SubmitButton mode="add" onClick={onClick} text="추가하기" />
     </React.Fragment>
   );
 }

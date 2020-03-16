@@ -73,6 +73,10 @@ module.exports = {
       'components': resolve(SRC_PATH, 'components'),
       'scss': resolve(SRC_PATH, 'scss'),
       'theme': resolve(SRC_PATH, 'theme'),
+      'actions': resolve(SRC_PATH, 'actions'),
+      'reducers': resolve(SRC_PATH, 'reducers'),
+      'containers': resolve(SRC_PATH, 'containers'),
+      'utils': resolve(SRC_PATH, 'utils'),
     }
   },
   plugins: [

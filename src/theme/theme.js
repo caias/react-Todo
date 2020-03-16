@@ -1,5 +1,5 @@
 const theme = {
-  incomplete: {
+  incompleted: {
     containerBg: '#b8daff',
     fontColor: '#004085',
     itemActiveBg: '#004085',
@@ -7,7 +7,7 @@ const theme = {
     buttonBg: '#007bff',
     submitButtonBg: '#007bff',
   },
-  complete: {
+  completed: {
     containerBg: '#bee5eb',
     fontColor: '#0c5460',
     itemActiveBg: '#0c5460',

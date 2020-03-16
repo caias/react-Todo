@@ -1,37 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import ListBox from 'components/ListBox';
-import TodoInput from 'components/TodoInput';
 
-const DIV = styled.div`
+const MainContainer = styled.main`
   overflow: hidden;
   padding: 0 45px 45px;
   margin-left: auto;
   margin-right: auto;
 `;
 
-const CardContainer = styled.div`
-  background-color: #fff;
-  border-radius: .25rem;
-  overflow: hidden;
-  padding: 1.25rem;
-  margin-top: 2rem;
-`;
-
-const Container = (props) => {
-  const { incompletedData, completedData } = props;
-  return(
-    <DIV>
-      <CardContainer>
-        <TodoInput />
-      </CardContainer>
-      <CardContainer>
-        <ListBox data={incompletedData} type="incomplete" />
-      </CardContainer>
-      <CardContainer>
-        <ListBox data={completedData} type="complete" />
-      </CardContainer>
-    </DIV>
+const Container = ({ children }) => {
+  return (
+    <MainContainer>{children}</MainContainer>
   );
 }
 

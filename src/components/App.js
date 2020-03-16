@@ -1,31 +1,33 @@
 import React from 'react';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import reducers from '../reducers';
-import theme from "theme/theme";
+// Presentational Component
 import Header from 'components/Header'
-import TodoContainer from 'components/container/container';
-
-const GlobalStyles = createGlobalStyle`
-  body {
-    background-color: #c6c6c6;
-    color: #212529;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  }
-`;
-
-const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+import SubTitle from 'components/SubTitle';
+import Container from 'components/Container';
+import Section from 'components/Section';
+// Container Components
+import IncompleteContainer from 'containers/IncompleteContainer';
+import CompleteContainer from 'containers/CompleteContainer';
+import FormContainer from 'containers/FormContainer';
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <Header />
-        <TodoContainer />
-      </ThemeProvider>
-    </Provider>
+    <React.Fragment>
+      <Header />
+      <Container>
+        <Section>
+          <SubTitle title="Todo 추가하기" />
+          <FormContainer />
+        </Section>
+        <Section>
+          <SubTitle title="미완료 리스트" />
+          <IncompleteContainer />
+        </Section>
+        <Section>
+          <SubTitle title="완료된 리스트" />
+          <CompleteContainer />
+        </Section>
+      </Container>
+    </React.Fragment>
   );
 };
 
