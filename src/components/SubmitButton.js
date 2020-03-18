@@ -24,11 +24,11 @@ const Button = styled.button`
 `;
 
 const SubmitButton = (props) => {
-  const { mode, text, onClick } = props;
+  const { mode, text, onSubmit } = props;
 
   return(
     <DIV>
-      <Button onClick={onClick} mode={mode}>{text}</Button>
+      <Button onClick={onSubmit} mode={mode}>{text}</Button>
     </DIV>
   );
 }

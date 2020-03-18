@@ -7,6 +7,9 @@ import SubmitButton from 'components/SubmitButton';
 import SelectBox from 'components/SelectBox';
 import AllSelect from 'components/AllSelect'
 
+// util
+import { getDate } from 'utils/date';
+
 const ItemContainer = styled.div`
   background-color: ${props => props.theme[props.mode].containerBg};
   color: ${props => props.theme[props.mode].fontColor};
@@ -16,13 +19,30 @@ const ItemContainer = styled.div`
 `;
 
 const ListBox = (props) => {
-  const { data, mode } = props;
+  const { data, mode, completeTodo } = props;
   const isComplete = mode === 'completed';
 
   const [activeStatus, setActiveStatus] = useState(false);
 
   function allCheckHandler(status) {
     setActiveStatus(status);
+  }
+
+  function onSubmit() {
+    const moveData = [];
+    const keepData = [];
+    const item = document.querySelectorAll(`[data-item=${mode}]`);
+    Array.from(item).forEach((value) => {
+      const hasActive = value.classList.contains('active');
+      const innerText = value.text;
+      const sliceIndex = innerText.indexOf(2);
+      const obj = {
+        title: innerText.slice(0, sliceIndex),
+        updateDate: getDate(),
+      }
+      hasActive ? moveData.push(obj) : keepData.push(obj);
+    });
+    completeTodo(moveData, keepData);
   }
 
   return(
@@ -36,14 +56,14 @@ const ListBox = (props) => {
         />
         {data.map((list, index) => 
           <TodoItem
-            key={index}
+            key={mode + index}
             mode={mode}
             title={list.title}
             updateDate={list.updateDate}
             allCheckHandler={allCheckHandler}
           />)}
       </ItemContainer>
-      <SubmitButton mode={mode} text={isComplete ? '복구하기' : '완료하기'} />
+      <SubmitButton onSubmit={onSubmit} mode={mode} text={isComplete ? '복구하기' : '완료하기'} />
     </React.Fragment>
   );
 }

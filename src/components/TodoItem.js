@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import styled from 'styled-components';
 
 const Anchor = styled.a.attrs({ href: '#' })`
@@ -43,9 +43,14 @@ const TodoItem = (props) => {
   
   function onClick(e) {
     e.preventDefault();
+    
     e.currentTarget.classList.toggle('active');
     allCheckHandler(isAllCheck());
   }
+  /**
+   * useMemo check를 위한 console
+   */
+  console.log('render')
 
   return(
     <Anchor data-item={mode} onClick={onClick} mode={mode}>
@@ -55,4 +60,6 @@ const TodoItem = (props) => {
   );
 }
 
-export default TodoItem;
+const compare = (prevProps, nextProps) => prevProps.title === nextProps.title;
+
+export default memo(TodoItem, compare);

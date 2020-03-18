@@ -15,6 +15,8 @@ export const addTodo = (title, date) => ({
   date,
 });
 
-export const completeTodo = () => ({
+export const completeTodo = (moveData, keepData) => ({
   type: COMPLETE_TODO,
+  moveData,
+  keepData,
 });

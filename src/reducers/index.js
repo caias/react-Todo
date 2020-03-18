@@ -12,6 +12,8 @@ const incompletedData = (state = incompleted, action) => {
           updateDate: action.date
         },
       ];
+    case actions.COMPLETE_TODO:
+      return state = action.keepData;
     default:
       return state;
   }
@@ -20,9 +22,7 @@ const incompletedData = (state = incompleted, action) => {
 const completedData = (state = completed, action) => {
   switch (action.type) {
     case actions.COMPLETE_TODO:
-      return {
-        ...state,
-      };
+      return state.concat(action.moveData);
     default:
       return state;
   }

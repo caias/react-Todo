@@ -29,7 +29,7 @@ const TodoInput = (props) => {
     setValue(e.target.value);
   };
 
-  const onClick = () => {
+  const onSubmit = () => {
     if (!value) {
       alert('내용이 없습니다.');
       return;
@@ -49,7 +49,7 @@ const TodoInput = (props) => {
   return (
     <React.Fragment>
       <Input onChange={onChange} value={value}/>
-      <SubmitButton mode="add" onClick={onClick} text="추가하기" />
+      <SubmitButton mode="add" onSubmit={onSubmit} text="추가하기" />
     </React.Fragment>
   );
 }
