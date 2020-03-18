@@ -19,36 +19,33 @@ const ListBox = (props) => {
   const { data, mode } = props;
   const isComplete = mode === 'completed';
 
-  const [allSelect, setAllSelect] = useState([]);
-  const [active, setActive] = useState([false, false, false]);
-  
-  const onHandle = (index) => {
-    active[index] = !active[index];
-    setActive(active);
-    // console.log(active);
+  const [activeStatus, setActiveStatus] = useState([false, false]);
+
+  function allCheckHandler(status, allStatus) {
+    setActiveStatus([status, allStatus]);
   }
-  
-  const checkAllActive = (e) => {
-    e.preventDefault();
-    // setAllSelect(!hasNonActive);
-  }
+
+  const setActive = activeStatus[0];
+  const setAllActive = activeStatus[1];
 
   return(
     <React.Fragment>
       {!isComplete && <SelectBox />}
       <ItemContainer mode={mode}>
-        <AllSelect mode={mode}/>
+        <AllSelect
+          mode={mode}
+          setActive={setActive}
+          allCheckHandler={allCheckHandler}
+        />
         {data.map((list, index) => 
-          <TodoItem 
+          <TodoItem
             key={index}
             mode={mode}
             title={list.title}
             updateDate={list.updateDate}
-            // onHandle={onHandle}
-            index={index}
-            isActive={active[index]}
-            active={active}
+            setAllActive={setAllActive}
             setActive={setActive}
+            allCheckHandler={allCheckHandler}
           />)}
       </ItemContainer>
       <SubmitButton mode={mode} text={isComplete ? '복구하기' : '완료하기'} />

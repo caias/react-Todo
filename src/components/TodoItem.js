@@ -30,29 +30,26 @@ const Anchor = styled.a.attrs({ href: '#' })`
 
 const TodoItem = (props) => {
   const {
-    mode,
     title,
     updateDate,
-    index,
-    active,
-    // isActive,
-    // onHandle,
-    setActive,
+    mode,
+    setAllActive,
+    allCheckHandler,
   } = props;
 
-  const [selected, setSelected] = useState(active[index]);
-
-  const onClick = (e) => {
+  function getAllCheck() {
+    const item = document.querySelectorAll(`[data-item=${mode}]`);
+    return Array.from(item).every(value => value.classList.contains('active'));
+  }
+  
+  function onClick(e) {
     e.preventDefault();
-
-    active[index] = !active[index];
-    setActive(active)
-    setSelected(active[index]);
+    getAllCheck() && allCheckHandler(false, true);
+    e.currentTarget.classList.toggle('active');
   }
 
-
   return(
-    <Anchor onClick={onClick} mode={mode} className={selected ? 'active' : ''}>
+    <Anchor data-item={mode} className={setAllActive && 'active'} onClick={onClick} mode={mode}>
       <span>{title}</span>
       <small>{updateDate}</small>
     </Anchor>

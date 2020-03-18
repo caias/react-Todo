@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Button = styled.button`
@@ -18,10 +18,21 @@ const Button = styled.button`
 `;
 
 const AllSelect = (props) => {
-  const { mode, onClick, allSelect } = props;
+  const {
+    mode,
+    setActive,
+    allCheckHandler,
+  } = props;
+
+  function onClick(e) {
+    e.preventDefault();
+    const { target } = e;
+    const hasActive = target.classList.contains('active');
+    allCheckHandler(!hasActive, !hasActive);
+  }
 
   return(
-    <Button onClick={onClick} className={`${allSelect ? '' : 'active'}`} mode={mode}>전체선택</Button>
+    <Button className={setActive ? 'active' : ''} onClick={onClick} mode={mode}>전체선택</Button>
   );
 };
 
