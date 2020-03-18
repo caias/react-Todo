@@ -20,19 +20,22 @@ const Button = styled.button`
 const AllSelect = (props) => {
   const {
     mode,
-    setActive,
+    activeStatus,
     allCheckHandler,
   } = props;
 
   function onClick(e) {
+    const item = document.querySelectorAll(`[data-item=${mode}]`)
+    const isActive = activeStatus === true;
+    const method = isActive ? 'remove' : 'add';
+
     e.preventDefault();
-    const { target } = e;
-    const hasActive = target.classList.contains('active');
-    allCheckHandler(!hasActive, !hasActive);
+    allCheckHandler(!activeStatus);
+    Array.from(item).forEach(value => value.classList[method]('active'));
   }
 
   return(
-    <Button className={setActive ? 'active' : ''} onClick={onClick} mode={mode}>전체선택</Button>
+    <Button className={activeStatus ? 'active' : ''} onClick={onClick} mode={mode}>전체선택</Button>
   );
 };
 

@@ -33,23 +33,22 @@ const TodoItem = (props) => {
     title,
     updateDate,
     mode,
-    setAllActive,
     allCheckHandler,
   } = props;
 
-  function getAllCheck() {
+  function isAllCheck() {
     const item = document.querySelectorAll(`[data-item=${mode}]`);
     return Array.from(item).every(value => value.classList.contains('active'));
   }
   
   function onClick(e) {
     e.preventDefault();
-    getAllCheck() && allCheckHandler(false, true);
     e.currentTarget.classList.toggle('active');
+    allCheckHandler(isAllCheck());
   }
 
   return(
-    <Anchor data-item={mode} className={setAllActive && 'active'} onClick={onClick} mode={mode}>
+    <Anchor data-item={mode} onClick={onClick} mode={mode}>
       <span>{title}</span>
       <small>{updateDate}</small>
     </Anchor>

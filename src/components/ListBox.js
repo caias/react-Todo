@@ -19,14 +19,11 @@ const ListBox = (props) => {
   const { data, mode } = props;
   const isComplete = mode === 'completed';
 
-  const [activeStatus, setActiveStatus] = useState([false, false]);
+  const [activeStatus, setActiveStatus] = useState(false);
 
-  function allCheckHandler(status, allStatus) {
-    setActiveStatus([status, allStatus]);
+  function allCheckHandler(status) {
+    setActiveStatus(status);
   }
-
-  const setActive = activeStatus[0];
-  const setAllActive = activeStatus[1];
 
   return(
     <React.Fragment>
@@ -34,7 +31,7 @@ const ListBox = (props) => {
       <ItemContainer mode={mode}>
         <AllSelect
           mode={mode}
-          setActive={setActive}
+          activeStatus={activeStatus}
           allCheckHandler={allCheckHandler}
         />
         {data.map((list, index) => 
@@ -43,8 +40,6 @@ const ListBox = (props) => {
             mode={mode}
             title={list.title}
             updateDate={list.updateDate}
-            setAllActive={setAllActive}
-            setActive={setActive}
             allCheckHandler={allCheckHandler}
           />)}
       </ItemContainer>
