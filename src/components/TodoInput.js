@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 // Presentational Component
 import SubmitButton from 'components/SubmitButton';
@@ -24,31 +24,34 @@ const Input = styled.input.attrs({
 const TodoInput = (props) => {
   const { addTodo } = props;
   const [value, setValue] = useState('');
+  const inputValue = useRef();
   
   const onChange = (e) => {
     setValue(e.target.value);
   };
 
   const onSubmit = () => {
-    if (!value) {
+    const currentText = inputValue.current.value;
+    
+    if (!currentText) {
       alert('내용이 없습니다.');
       return;
-    } else if (value.length > limit) {
+    } else if (currentText.length > limit) {
       alert(`글자수가 ${limit}자를 초과하였습니다.`);
 
-      const modifyText = value.slice(0, limit - 1);
+      const modifyText = currentText.slice(0, limit - 1);
       setValue(modifyText);
       return;
     }
 
     const date = getDate();
-    addTodo(value, date);
+    addTodo(currentText, date);
     setValue('');
   }
 
   return (
     <React.Fragment>
-      <Input onChange={onChange} value={value}/>
+      <Input onChange={onChange} ref={inputValue} value={value}/>
       <SubmitButton mode="add" onSubmit={onSubmit} text="추가하기" />
     </React.Fragment>
   );
