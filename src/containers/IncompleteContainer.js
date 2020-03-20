@@ -1,6 +1,6 @@
 import ListBox from 'components/ListBox';
 import { connect } from 'react-redux';
-import { completeTodo } from 'actions';
+import { completedTodo, sortTodo } from 'actions';
 
 const mapStateToProps = (state) => ({
   data: state.incompletedData,
@@ -8,7 +8,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  completeTodo: (moveData, keepData) => dispatch(completeTodo(moveData, keepData)),
+  completedTodo: (moveData, keepData) => dispatch(completedTodo(moveData, keepData)),
+  sortTodo: (sortData) => dispatch(sortTodo(sortData)),
 })
 
 const IncompleteContainer = connect(

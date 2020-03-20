@@ -9,6 +9,7 @@ import AllSelect from 'components/AllSelect'
 
 // util
 import { getDate } from 'utils/date';
+import { subjectSort, newestSort } from '../utils/sort';
 
 const ItemContainer = styled.div`
   background-color: ${props => props.theme[props.mode].containerBg};
@@ -19,16 +20,20 @@ const ItemContainer = styled.div`
 `;
 
 const ListBox = (props) => {
-  const { data, mode, completeTodo } = props;
+  const { data, mode, sortTodo, completedTodo, incompletedTodo } = props;
+  const [activeStatus, setActiveStatus] = useState(false);
   const isComplete = mode === 'completed';
 
-  const [activeStatus, setActiveStatus] = useState(false);
-
-  function allCheckHandler(status) {
+  const allCheckHandler = (status) => {
     setActiveStatus(status);
   }
 
-  function onSubmit() {
+  const onChangeHandler = (value) => {
+    const sortType = value === 'subject' ? subjectSort(data) : newestSort(data);
+    sortTodo(sortType);
+  }
+
+  const onSubmit = () => {
     const moveData = [];
     const keepData = [];
     const item = document.querySelectorAll(`[data-item=${mode}]`);
@@ -42,12 +47,12 @@ const ListBox = (props) => {
       }
       hasActive ? moveData.push(obj) : keepData.push(obj);
     });
-    completeTodo(moveData, keepData);
+    isComplete ? incompletedTodo(moveData, keepData) : completedTodo(moveData, keepData)
   }
 
   return(
     <React.Fragment>
-      {!isComplete && <SelectBox />}
+      {!isComplete && <SelectBox onChangeHandler={onChangeHandler} />}
       <ItemContainer mode={mode}>
         <AllSelect
           mode={mode}

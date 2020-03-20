@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const SelectWrap = styled.div`
@@ -17,12 +17,21 @@ const Select = styled.select`
   font-size: 1rem;
 `;
 
-const SelectBox = () => {
+const SelectBox = (props) => {
+  const { onChangeHandler } = props;
+  const [value, setValue] = useState('');
+
+  const onChange = (e) => {
+    const value = e.target.value;
+    setValue(value);
+    onChangeHandler(value);
+  }
+  
   return(
     <SelectWrap>
-      <Select>
+      <Select value={value} onChange={onChange}>
         <option value="subject">제목순</option>
-        <option value="new">최신순</option>
+        <option value="newest">최신순</option>
       </Select>
     </SelectWrap>
   );

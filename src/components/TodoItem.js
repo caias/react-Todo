@@ -47,10 +47,6 @@ const TodoItem = (props) => {
     e.currentTarget.classList.toggle('active');
     allCheckHandler(isAllCheck());
   }
-  /**
-   * useMemo check를 위한 console
-   */
-  console.log('render')
 
   return(
     <Anchor data-item={mode} onClick={onClick} mode={mode}>
@@ -62,4 +58,4 @@ const TodoItem = (props) => {
 
 const compare = (prevProps, nextProps) => prevProps.title === nextProps.title;
 
-export default memo(TodoItem, compare);
+export default TodoItem;

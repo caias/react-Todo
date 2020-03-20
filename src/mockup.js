@@ -4,11 +4,11 @@ module.exports = {
   'incompleted': [
     {
       title: 'javascript 리서치',
-      updateDate: '2019-04-10 10:00',
+      updateDate: '2019-04-11 10:00',
     },
     {
       title: '테스트 케이스 작성하기',
-      updateDate: '2019-04-10 11:00',
+      updateDate: '2019-04-09 11:00',
     },
     {
       title: 'github push 하기',

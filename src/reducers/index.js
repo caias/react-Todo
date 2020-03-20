@@ -14,6 +14,10 @@ const incompletedData = (state = incompleted, action) => {
       ];
     case actions.COMPLETE_TODO:
       return state = action.keepData;
+    case actions.INCOMPLETE_TODO:
+      return state = [...state, ...action.moveData];
+    case actions.SORT_TODO:
+      return action.sortData;
     default:
       return state;
   }
@@ -22,7 +26,9 @@ const incompletedData = (state = incompleted, action) => {
 const completedData = (state = completed, action) => {
   switch (action.type) {
     case actions.COMPLETE_TODO:
-      return state.concat(action.moveData);
+      return state = [...state, ...action.moveData];
+    case actions.INCOMPLETE_TODO:
+      return state = action.keepData;
     default:
       return state;
   }
