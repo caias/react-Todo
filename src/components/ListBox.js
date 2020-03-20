@@ -11,16 +11,14 @@ import AllSelect from 'components/AllSelect'
 import { getDate } from 'utils/date';
 import { subjectSort, newestSort } from '../utils/sort';
 
-const ItemContainer = styled.div`
-  background-color: ${props => props.theme[props.mode].containerBg};
-  color: ${props => props.theme[props.mode].fontColor};
-  overflow: hidden;
-  border-radius: .25rem;
-  border: 1px solid rgba(0,0,0,.125);
-`;
-
 const ListBox = (props) => {
-  const { data, mode, sortTodo, completedTodo, incompletedTodo } = props;
+  const { 
+    data,
+    mode,
+    sortTodo,
+    completedTodo,
+    incompletedTodo
+  } = props;
   const [activeStatus, setActiveStatus] = useState(false);
   const isComplete = mode === 'completed';
 
@@ -29,7 +27,8 @@ const ListBox = (props) => {
   }
 
   const onChangeHandler = (value) => {
-    const sortType = value === 'subject' ? subjectSort(data) : newestSort(data);
+    const shallowData = data.slice();
+    const sortType = value === 'subject' ? subjectSort(shallowData) : newestSort(shallowData);
     sortTodo(sortType);
   }
 
@@ -52,7 +51,7 @@ const ListBox = (props) => {
 
   return(
     <React.Fragment>
-      {!isComplete && <SelectBox onChangeHandler={onChangeHandler} />}
+      {!isComplete && <SelectBox onChange={onChangeHandler} />}
       <ItemContainer mode={mode}>
         <AllSelect
           mode={mode}
@@ -72,5 +71,13 @@ const ListBox = (props) => {
     </React.Fragment>
   );
 }
+
+const ItemContainer = styled.div`
+  background-color: ${props => props.theme[props.mode].containerBg};
+  color: ${props => props.theme[props.mode].fontColor};
+  overflow: hidden;
+  border-radius: .25rem;
+  border: 1px solid rgba(0,0,0,.125);
+`;
 
 export default ListBox;

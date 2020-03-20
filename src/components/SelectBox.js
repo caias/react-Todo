@@ -18,18 +18,11 @@ const Select = styled.select`
 `;
 
 const SelectBox = (props) => {
-  const { onChangeHandler } = props;
-  const [value, setValue] = useState('');
-
-  const onChange = (e) => {
-    const value = e.target.value;
-    setValue(value);
-    onChangeHandler(value);
-  }
+  const { onChange } = props;
   
   return(
     <SelectWrap>
-      <Select value={value} onChange={onChange}>
+      <Select onChange={(e) => onChange(e.target.value)}>
         <option value="subject">제목순</option>
         <option value="newest">최신순</option>
       </Select>

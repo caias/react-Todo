@@ -1,4 +1,4 @@
-import React, {} from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 
 const DIV = styled.div`
@@ -32,5 +32,6 @@ const SubmitButton = (props) => {
     </DIV>
   );
 }
+const compare = (prevProps, nextProps) => prevProps.text === nextProps.text;
 
-export default SubmitButton;
+export default memo(SubmitButton, compare);
