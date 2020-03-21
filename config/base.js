@@ -70,13 +70,14 @@ module.exports = {
     // extensions: ['.tsx', '.ts', '.js', 'jsx', '.scss'],
     extensions: ['.js', 'jsx', '.scss'],
     alias: {
-      'components': resolve(SRC_PATH, 'components'),
+      'utils': resolve(SRC_PATH, 'utils'),
       'scss': resolve(SRC_PATH, 'scss'),
       'theme': resolve(SRC_PATH, 'theme'),
       'actions': resolve(SRC_PATH, 'actions'),
       'reducers': resolve(SRC_PATH, 'reducers'),
       'containers': resolve(SRC_PATH, 'containers'),
-      'utils': resolve(SRC_PATH, 'utils'),
+      'components': resolve(SRC_PATH, 'components'),
+      'designComponents': resolve(SRC_PATH, 'designComponents'),
     }
   },
   plugins: [

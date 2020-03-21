@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 // Presentational Component
 import TodoItem from 'components/TodoItem';
-import SubmitButton from 'components/SubmitButton';
-import SelectBox from 'components/SelectBox';
 import AllSelect from 'components/AllSelect'
 
 // util
@@ -51,7 +49,6 @@ const ListBox = (props) => {
 
   return(
     <React.Fragment>
-      {!isComplete && <SelectBox onChange={onChangeHandler} />}
       <ItemContainer mode={mode}>
         <AllSelect
           mode={mode}
@@ -67,7 +64,6 @@ const ListBox = (props) => {
             allCheckHandler={allCheckHandler}
           />)}
       </ItemContainer>
-      <SubmitButton onSubmit={onSubmit} mode={mode} text={isComplete ? '복구하기' : '완료하기'} />
     </React.Fragment>
   );
 }

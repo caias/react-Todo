@@ -1,10 +1,5 @@
-import React, { memo } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-
-const DIV = styled.div`
-  text-align: right;
-  margin-top: 1.25rem;
-`;
 
 const Button = styled.button`
   cursor: pointer;
@@ -23,15 +18,16 @@ const Button = styled.button`
   }
 `;
 
-const SubmitButton = (props) => {
-  const { mode, text, onSubmit } = props;
+const DefaultButton = (props) => {
+  const { 
+    mode,
+    text,
+    onClick
+  } = props;
 
-  return(
-    <DIV>
-      <Button onClick={onSubmit} mode={mode}>{text}</Button>
-    </DIV>
+  return (
+    <Button onClick={onClick} mode={mode}>{text}</Button>
   );
 }
-const compare = (prevProps, nextProps) => prevProps.text === nextProps.text;
 
-export default memo(SubmitButton, compare);
+export default DefaultButton;

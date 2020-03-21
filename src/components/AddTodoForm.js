@@ -1,25 +1,11 @@
 import React, { useState, useRef } from 'react';
-import styled from 'styled-components';
 // Presentational Component
-import SubmitButton from 'components/SubmitButton';
+import ButtonWrap from 'components/ButtonWrap';
+import InputText from 'designComponents/InputText';
 // util
 import { getDate } from 'utils/date'
 
 const limit = 30;
-const Input = styled.input.attrs({ 
-    type: 'text',
-    placeholder: `${limit}자내로 적어주세요.`
-  })`
-  width: 100%;
-  color: #495057;
-  background-color: #fff;
-  border: 1px solid #ced4da;
-  border-radius: .25rem;
-  line-height: 1.5;
-  padding: .375rem .75rem;
-  font-size: 1rem;
-  height: 38px;
-`;
 
 const TodoInput = (props) => {
   const { addTodo } = props;
@@ -51,8 +37,18 @@ const TodoInput = (props) => {
 
   return (
     <React.Fragment>
-      <Input onChange={onChange} ref={inputValue} value={value}/>
-      <SubmitButton mode="add" onSubmit={onSubmit} text="추가하기" />
+      <InputText
+        ref={inputValue}
+        value={value}
+        onChange={onChange}
+        placeholder={`${limit}자내로 적어주세요.`}
+      />
+      <ButtonWrap
+        align="right"
+        mode="add"
+        onClick={onSubmit}
+        text="ADD"
+      />
     </React.Fragment>
   );
 }

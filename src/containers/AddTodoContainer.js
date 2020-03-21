@@ -1,4 +1,4 @@
-import TodoInput from 'components/TodoInput';
+import AddTodoForm from 'components/AddTodoForm';
 import { connect } from 'react-redux';
 import { addTodo } from 'actions';
 
@@ -9,6 +9,6 @@ const mapDispatchToProps = (dispatch) => ({
 const FormContainer = connect(
   null,
   mapDispatchToProps,
-)(TodoInput);
+)(AddTodoForm);
 
 export default FormContainer;

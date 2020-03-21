@@ -1,4 +1,4 @@
-import ListBox from 'components/ListBox';
+import ListGroup from 'components/ListGroup';
 import { connect } from 'react-redux';
 import { incompletedTodo } from 'actions';
 
@@ -14,6 +14,6 @@ const mapDispatchToProps = (dispatch) => ({
 const CompleteContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(ListBox);
+)(ListGroup);
 
 export default CompleteContainer;
