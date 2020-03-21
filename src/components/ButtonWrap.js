@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import AlignDiv from 'designComponents/AlignDiv';
 import DefaultButton from 'designComponents/DefaultButton';
 
@@ -15,4 +15,6 @@ const ButtonWrap = (props) => {
   );
 };
 
-export default ButtonWrap;
+const compare = (prevProps, nextProps) => prevProps.text === nextProps.text;
+
+export default memo(ButtonWrap, compare);

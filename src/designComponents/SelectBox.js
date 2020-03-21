@@ -5,11 +5,17 @@ const Select = styled.select`
   width: 150px;
   height: 38px;
   padding: .375rem .75rem;
-  color: #495057;
-  border: 1px solid #ced4da;
-  border-radius: .25rem;
-  background-color: #fff;
+  color: #999;
+  border-radius: 1rem;
+  background-color: #ebecf0;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  transition: all .25s ease;
+  outline: none;
   font-size: 1rem;
+  &:hover {
+    transition: all .25s ease;
+    box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+  }
 `;
 
 const SelectBox = (props) => {

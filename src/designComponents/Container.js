@@ -8,7 +8,10 @@ const MainContainer = styled.main`
   margin-right: auto;
 `;
 
-const Container = ({ children }) => {
+const Container = (props) => {
+  const {
+    children,
+  } = props;
   return (
     <MainContainer>{children}</MainContainer>
   );

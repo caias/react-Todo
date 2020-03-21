@@ -1,6 +1,7 @@
 import * as actions from '../actions';
 import { combineReducers } from 'redux';
 import { incompleted, completed } from '../mockup';
+import { subjectSort, newestSort } from '../utils/sort';
 
 const incompletedData = (state = incompleted, action) => {
   switch(action.type) {
@@ -17,7 +18,8 @@ const incompletedData = (state = incompleted, action) => {
     case actions.INCOMPLETE_TODO:
       return state = [...state, ...action.moveData];
     case actions.SORT_TODO:
-      return action.sortData;
+      const shallowData = state.slice();
+      return state = action.sortType === 'subject' ? subjectSort(shallowData) : newestSort(shallowData);
     default:
       return state;
   }

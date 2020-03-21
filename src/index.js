@@ -14,9 +14,9 @@ import './scss/global.scss';
 
 const GlobalStyles = createGlobalStyle`
   body {
-    background-color: #c6c6c6;
-    color: #212529;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    background-color: #ebecf0;
+    color: #babecc;
+    font-family: 'Montserrat',sans-serif";
   }
 `;
 

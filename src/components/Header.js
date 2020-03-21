@@ -3,10 +3,11 @@ import styled from 'styled-components';
 
 const HeaderContainer = styled.header`
   padding: .8rem 1rem;
-  background-color: #f8f9fa;
+  color: #000;
   h1 {
-    font-size: 1.25rem;
+    font-size: 2rem;
     line-height: 1.5;
+    text-align: center;
   }
 `;
 

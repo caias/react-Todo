@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SectionContainer = styled.section`
+const DIV = styled.div`
   background-color: #ebecf0;
   box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
   border-radius: 1rem;
@@ -10,10 +10,10 @@ const SectionContainer = styled.section`
   margin-top: 2rem;
 `;
 
-const Section = ({children}) => {
+const ListGroup = ({ children }) => {
   return (
-    <SectionContainer>{children}</SectionContainer>
+    <DIV>{children}</DIV>
   );
 }
 
-export default Section;
+export default ListGroup;

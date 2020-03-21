@@ -28,7 +28,7 @@ export const incompletedTodo = (moveData, keepData) => ({
   keepData,
 });
 
-export const sortTodo = (sortData) => ({
+export const sortTodo = (sortType) => ({
   type: SORT_TODO,
-  sortData,
+  sortType,
 });

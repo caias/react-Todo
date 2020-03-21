@@ -1,10 +1,9 @@
-import ListGroup from 'components/ListGroup';
+import TodoListGroup from 'components/TodoListGroup';
 import { connect } from 'react-redux';
 import { incompletedTodo } from 'actions';
 
 const mapStateToProps = (state) => ({
   data: state.completedData,
-  mode: 'completed',
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -14,6 +13,6 @@ const mapDispatchToProps = (dispatch) => ({
 const CompleteContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(ListGroup);
+)(TodoListGroup);
 
 export default CompleteContainer;
