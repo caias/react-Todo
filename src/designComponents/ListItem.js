@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Anchor = styled.a.attrs({ href: '#' })`
@@ -37,10 +37,15 @@ const ListItem = (props) => {
     active,
     onClick,
     children,
+    allToggle,
   } = props;
-
+  
   return (
-    <Anchor onClick={onClick} active={active}>
+    <Anchor
+      active={active}
+      allToggle={allToggle}
+      onClick={(e) => onClick(e, index)}
+    >
       {!children && text}
       {
         children &&
@@ -53,6 +58,4 @@ const ListItem = (props) => {
   );
 };
 
-const compare = (prevProps, nextProps) => prevProps.title === nextProps.title;
-
-export default memo(ListItem, compare);
+export default ListItem;

@@ -56,7 +56,7 @@ const TodoItem = (props) => {
   );
 }
 
-const compare = (prevProps, nextProps) => prevProps.title === nextProps.title;
+const compare = (prevProps, nextProps) => prevProps.active === nextProps.active;
 
 export default memo(TodoItem, compare);
 // export default TodoItem;
