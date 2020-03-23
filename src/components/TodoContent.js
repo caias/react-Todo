@@ -6,8 +6,6 @@ import Section from 'designComponents/Section';
 import AlignDiv from 'designComponents/AlignDiv';
 import SelectBox from 'designComponents/SelectBox';
 
-import TodoListGroup from 'components/TodoListGroup';
-import ButtonWrap from 'components/ButtonWrap';
 import AddTodoForm from 'components/AddTodoForm';
 // Container Components
 import IncompleteContainer from 'containers/IncompleteContainer';
@@ -27,16 +25,10 @@ const sortOpt = [
   },
 ]
 
-const onSubmit = () => {
-  console.log('button');
-};
-
 const TodoContent = (props) => {
   const {
     addTodo,
     sortTodo,
-    completedTodo,
-    incompletedTodo,
   } = props;
 
   return(
@@ -51,20 +43,10 @@ const TodoContent = (props) => {
           <SelectBox options={sortOpt} onChange={sortTodo} />
         </AlignDiv>
         <IncompleteContainer />
-        <ButtonWrap
-          align="right"
-          text="COMPLETE"
-          onClick={completedTodo}
-        />
       </Section>
       <Section>
         <SubTitle title="완료된 리스트" />
         <CompleteContainer />
-        <ButtonWrap
-          align="right"
-          text="RESTORE"
-          onClick={onSubmit}
-        />
       </Section>
     </Container>
   );

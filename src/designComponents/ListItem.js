@@ -43,7 +43,6 @@ const ListItem = (props) => {
   return (
     <Anchor
       active={active}
-      allToggle={allToggle}
       onClick={(e) => onClick(e, index)}
     >
       {!children && text}

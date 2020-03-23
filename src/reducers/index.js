@@ -18,8 +18,14 @@ const incompletedData = (state = incompleted, action) => {
     case actions.INCOMPLETE_TODO:
       return state = [...state, ...action.moveData];
     case actions.SORT_TODO:
-      const shallowData = state.slice();
+      const shallowData = [...state];
       return state = action.sortType === 'subject' ? subjectSort(shallowData) : newestSort(shallowData);
+    case actions.INCOMPLETE_TOGGLE_TODO:
+      return state = state.map((todo, todoIndex) => {
+        return todoIndex === action.index ? { ...todo, active: !todo.active } : todo;
+      });
+    case actions.INCOMPLETE_TOGGLE_ALL:
+      return state = state.map(todo => ({ ...todo, active: action.status}));
     default:
       return state;
   }
@@ -31,6 +37,12 @@ const completedData = (state = completed, action) => {
       return state = [...state, ...action.moveData];
     case actions.INCOMPLETE_TODO:
       return state = action.keepData;
+    case actions.COMPLETE_TOGGLE_TODO:
+      return state = state.map((todo, todoIndex) => {
+        return todoIndex === action.index ? { ...todo, active: !todo.active } : todo;
+      });
+    case actions.COMPLETE_TOGGLE_ALL:
+      return state = state.map(todo => ({ ...todo, active: action.status }));
     default:
       return state;
   }
