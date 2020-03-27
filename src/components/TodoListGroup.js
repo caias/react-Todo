@@ -16,8 +16,6 @@ const TodoListGroup = (props) => {
     incompletedTodo,
   } = props;
 
-  console.log(props);
-
   const iscompleteMode = type === 'complete';
 
   const [allToggle, setAllToggle] = useState(false);
@@ -25,8 +23,6 @@ const TodoListGroup = (props) => {
   useEffect(() => {
     getCheckstatus();
   }, [data]);
-
-  console.log(data)
 
   const getCheckstatus = useCallback(() => {
     const activedLength = data.filter(data => data.active === true).length;
@@ -44,13 +40,12 @@ const TodoListGroup = (props) => {
     iscompleteMode ? completeToggleTodo(index) : incompleteToggleTodo(index)
   }, [data]);
 
-  const onTodoHandler = () => {
-    // const moveData = data.filter(value => value.active);
-    // const keepData = data.filter(value => !value.active);
-    // console.log(data);
-    // console.log({ keepData});
-    // iscompleteMode && incompletedTodo(moveData, keepData);
-    // !iscompleteMode && completedTodo(moveData, keepData);
+  function onTodoHandler() {
+    const moveData = data.filter(value => value.active);
+    const keepData = data.filter(value => !value.active);
+
+    iscompleteMode && incompletedTodo(moveData, keepData);
+    !iscompleteMode && completedTodo(moveData, keepData);
   }
 
   return(
@@ -78,7 +73,7 @@ const TodoListGroup = (props) => {
       <ButtonWrap
         align="right"
         text="COMPLETE"
-        onClick={iscompleteMode ? incompletedTodo : completedTodo}
+        onClick={onTodoHandler}
       />
     </React.Fragment>
   );

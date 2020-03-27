@@ -15,6 +15,4 @@ const ButtonWrap = (props) => {
   );
 };
 
-const compare = (prevProps, nextProps) => prevProps.text === nextProps.text;
-
-export default memo(ButtonWrap, compare);
+export default memo(ButtonWrap);

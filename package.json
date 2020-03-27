@@ -1,7 +1,7 @@
 {
-  "name": "react-scaffolding",
-  "version": "1.0.5",
-  "description": "react with webpack and typescript my scaffolding",
+  "name": "react-todo",
+  "version": "1.0.6",
+  "description": "react todo list with redux",
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
@@ -9,7 +9,7 @@
     "prod": "npm run clean && NODE_ENV=production webpack",
     "server": "nodemon ./server/server.js"
   },
-  "repository": "https://github.com/caias/webpack-react-test.git",
+  "repository": "https://github.com/caias/react-Todo.git",
   "author": "caias <caias1018@gmail.com>",
   "license": "MIT",
   "devDependencies": {

@@ -16,7 +16,8 @@ const incompletedData = (state = incompleted, action) => {
     case actions.COMPLETE_TODO:
       return state = action.keepData;
     case actions.INCOMPLETE_TODO:
-      return state = [...state, ...action.moveData];
+      const setActiveFalse = action.moveData.map(value => ({ ...value, active: false }));
+      return state = [...state, ...setActiveFalse];
     case actions.SORT_TODO:
       const shallowData = [...state];
       return state = action.sortType === 'subject' ? subjectSort(shallowData) : newestSort(shallowData);
@@ -34,7 +35,8 @@ const incompletedData = (state = incompleted, action) => {
 const completedData = (state = completed, action) => {
   switch (action.type) {
     case actions.COMPLETE_TODO:
-      return state = [...state, ...action.moveData];
+      const setActiveFalse = action.moveData.map(value => ({ ...value, active: false }));
+      return state = [...state, ...setActiveFalse];
     case actions.INCOMPLETE_TODO:
       return state = action.keepData;
     case actions.COMPLETE_TOGGLE_TODO:
